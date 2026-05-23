@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduSmart Portal - Student Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="page_student_reportcard.css">
+
+    <!-- Supabase CDN Engine Link added so this page can access your database -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head>
+<body>
+
+    <header>
+        <div class="logo-area">
+            <div class="logo-icon">🎓</div>
+            <div class="logo-text">EduSmart Portal <span class="logo-subtext">Student Dashboard</span></div>
+        </div>
+        <div class="user-nav-info">
+            <!-- Dynamic header name placeholder -->
+            <span class="student-name-header" id="header-student-name">Loading Profile...</span>
+            <a href="page_login_main.html" class="sign-out-btn">
+                <span>↳</span> Sign Out
+            </a>
+        </div>
+    </header>
+
+    <div class="tabs-container">
+        <a href="page_student_reportcard.html" class="tab-item active">📄 Report Card</a>
+        <a href="page_student_learningtest.html" class="tab-item">🌐 Learning Test <span class="dot-indicator"></span></a>
+        <a href="page_student_studyplanner.html" class="tab-item">📅 Study Planner</a>
+    </div>
+
+    <main>
+
+        <div class="page-title-section">
+            <div class="page-title-icon">📋</div>
+            <div class="page-title-text">
+                <h1>Report Card</h1>
+                <p>Your academic results for the current examination.</p>
+            </div>
+        </div>
+
+        <div class="profile-card">
+            <div class="avatar">👤</div>
+            <div class="profile-info">
+                <!-- Dynamic main layout name placeholder -->
+                <h2 id="profile-student-name">Loading...</h2>
+                <div class="profile-meta">4 Amanah · Academic Year 2025/2026</div>
+                <div class="badge-container" id="profile-badges">
+                    <!-- Badges injected dynamically by JS -->
+                </div>
+            </div>
+        </div>
+
+        <div class="table-card">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 40%;">Subject</th>
+                        <th style="width: 20%;">Test (30%)</th>
+                        <th style="width: 20%;">Exam (70%)</th>
+                        <th style="width: 20%;">Total Grade</th>
+                    </tr>
+                </thead>
+                <tbody id="report-card-body">
+                    <tr>
+                        <td colspan="4" style="text-align: center; padding: 20px;">Fetching marks data from engine database...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="comment-card">
+            <div class="comment-title">🔖 Teacher's Comment</div>
+            <div class="comment-text" id="teacher-comment">
+                System processing student performance distributions...
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Core processing script link -->
+    <script src="page_student_reportcard.js"></script>
+</body>
+</html>

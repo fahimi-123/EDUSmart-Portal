@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+    <title>Teacher Dashboard</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+    <style>
+
+        body {
+            font-family: Arial;
+            background: #f4f7fb;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            background: #4f46e5;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+            button:hover {
+                background: #4338ca;
+            }
+
+        .student-card {
+            background: #eef2ff;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Teacher Dashboard</h1>
+
+        <input type="text"
+               id="student_name"
+               placeholder="Student Name">
+
+        <input type="number"
+               id="bahasa_melayu"
+               placeholder="Bahasa Melayu Mark">
+
+        <input type="number"
+               id="english"
+               placeholder="English Mark">
+
+        <input type="number"
+               id="math"
+               placeholder="Mathematics Mark">
+
+        <input type="number"
+               id="sejarah"
+               placeholder="Sejarah Mark">
+
+        <input type="number"
+               id="sains"
+               placeholder="Sains Mark">
+
+        <button onclick="saveMarks()">
+            Submit Marks
+        </button>
+
+        <div id="output"></div>
+
+    </div>
+
+
+    <script>// ======================
+  // SUPABASE
+  // ======================
+
+  const supabaseUrl =
+  'https://tywtoszodekrkyopjpal.supabase.co'
+
+  const supabaseKey =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR5d3Rvc3pvZGVrcmt5b3BqcGFsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk0OTgxNzcsImV4cCI6MjA5NTA3NDE3N30.Licadtyc4jVkWjwpo3Pxo9y_1XSVkEkX0xJHuJEYIus'
+
+  const client =
+  supabase.createClient(
+    supabaseUrl,
+    supabaseKey
+  )
+
+
+
+  // ======================
+  // SAVE MARKS
+  // ======================
+
+  async function saveMarks(){
+
+    const student_name =
+    document.getElementById(
+      'student_name'
+    ).value
+
+    const bahasa_melayu =
+parseInt(
+document.getElementById('bahasa_melayu').value
+)
+
+const english =
+parseInt(
+document.getElementById('english').value
+)
+
+const math =
+parseInt(
+document.getElementById('math').value
+)
+
+const sejarah =
+parseInt(
+document.getElementById('sejarah').value
+)
+
+const sains =
+parseInt(
+document.getElementById('sains').value
+)
+
+
+    // AI ANALYSIS
+
+    const average = (english + math + sains + sejarah + bahasa_melayu )/5
+
+    let learner_type =
+    "Slow Learner"
+
+    if(average >= 80){
+      learner_type="Fast Learner"
+    }
+
+    // INSERT DATABASE
+
+    const { data, error } =
+    await client
+    .from('teacher')
+    .insert([
+      {
+        student_name,
+        bahasa_melayu,
+        english,
+        math,
+        sains,
+        sejarah,
+        learner_type
+      }
+    ])
+
+
+    if(error){
+
+      console.log(error)
+
+      alert("Error Saving Data")
+
+      return
+
+    }
+
+
+    alert("Marks Saved!")
+
+    getData()
+
+  }
+
+
+
+  // ======================
+  // DISPLAY DATA
+  // ======================
+
+  async function getData(){
+
+    const { data, error } =
+    await client
+    .from('teacher')
+    .select('*')
+
+
+    let html = ''
+
+    data.forEach(student => {
+
+      html += `
+
+      <div class="student-card">
+
+        <h3>
+          ${student.student_name}
+        </h3>
+
+     <td>${student.bahasa_melayu}</td>
+
+    <td>${student.english}</td>
+
+    <td>${student.math}</td>
+
+    <td>${student.sejarah}</td>
+
+    <td>${student.sains}</td>
+
+        <p>
+          Learner Type:
+          ${student.learner_type}
+        </p>
+
+      </div>
+
+      `
+
+    })
+
+    document.getElementById(
+      'output'
+    ).innerHTML = html
+
+  }
+
+
+  // AUTO LOAD
+
+  getData()</script>
+
+
+    <button type="submit" onclick="document.location='edutest.html'">next page</button>
+</body>
+</html>

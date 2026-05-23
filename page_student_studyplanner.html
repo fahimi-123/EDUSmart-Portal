@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduSmart Portal - My Study Planner</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="page_student_studyplanner.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo-area">
+            <div class="logo-icon">🎓</div>
+            <div class="logo-text">EduSmart Portal <span class="logo-subtext">Student Dashboard</span></div>
+        </div>
+        <div class="user-nav-info">
+            <span class="student-name-header">Priya Devi a/p Subramaniam · 4 Bijaksana</span>
+            <a href="page_login_main.html" class="sign-out-btn">↳ Sign Out</a>
+        </div>
+    </header>
+
+    <div class="tabs-container">
+        <a href="page_student_reportcard.html" class="tab-item">📄 Report Card</a>
+        <a href="page_student_learningtest.html" class="tab-item">🌐 Learning Test</a>
+        <a href="page_student_studyplanner.html" class="tab-item active">📅 Study Planner</a>
+    </div>
+
+    <main>
+        <div class="page-title-section">
+            <div class="page-title-icon">📅</div>
+            <div class="page-title-text">
+                <h1>My Study Planner</h1>
+                <p>A personalised plan based on your learner type and learning style.</p>
+            </div>
+        </div>
+
+        <div class="meta-badge-row">
+            <div class="meta-badge-card">
+                <span class="meta-icon icon-purple">⚡</span>
+                <div class="meta-text-block">
+                    <span class="meta-label">Learner Type</span>
+                    <span class="meta-value">Fast Learner</span>
+                </div>
+            </div>
+            <div class="meta-badge-card">
+                <span class="meta-icon icon-blue">👁️</span>
+                <div class="meta-text-block">
+                    <span class="meta-label">Learning Style</span>
+                    <span class="meta-value">Visual Learner</span>
+                </div>
+            </div>
+        </div>
+
+        <section class="planner-card">
+            <h3 class="card-section-heading"><span class="heading-icon">🕒</span> Recommended Weekly Schedule</h3>
+            <div class="schedule-timeline">
+                <div class="schedule-row">
+                    <div class="time-pill">6:30 - 7:00 AM</div>
+                    <div class="schedule-desc">Review previous day's advanced notes</div>
+                </div>
+                <div class="schedule-row">
+                    <div class="time-pill">2:00 - 4:00 PM</div>
+                    <div class="schedule-desc">Deep study: 2 subjects × 45 minutes each</div>
+                </div>
+                <div class="schedule-row">
+                    <div class="time-pill">8:00 - 9:30 PM</div>
+                    <div class="schedule-desc">Challenge problems + preview new topics</div>
+                </div>
+                <div class="schedule-row">
+                    <div class="time-pill day-pill">Saturday (3 hrs)</div>
+                    <div class="schedule-desc font-medium">Full mock exam simulation</div>
+                </div>
+                <div class="schedule-row">
+                    <div class="time-pill day-pill">Sunday (2 hrs)</div>
+                    <div class="schedule-desc font-medium">Review mistakes + weekly planning</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="methods-section">
+            <h3 class="card-section-heading"><span class="heading-icon">💡</span> Best Study Methods For You (Visual)</h3>
+
+            <div class="method-card">
+                <div class="planner-card ai-tips-card">
+                    <div class="method-header">
+                        <span class="method-emoji">🗺️</span>
+                        <h4>Mind Mapping</h4>
+                    </div>
+                    <ul class="method-bullet-list">
+                        <li>Draw central topic in center</li>
+                        <li>Branch out with subtopics</li>
+                        <li>Use color coding for subjects</li>
+                    </ul>
+                    </div>
+                </div>
+
+                <div class="method-card">
+                    <div class="planner-card ai-tips-card">
+                        <div class="method-header">
+                            <span class="method-emoji">🎨</span>
+                            <h4>Color-Coded Notes</h4>
+                        </div>
+                        <ul class="method-bullet-list">
+                            <li>Highlight key terms in one color</li>
+                            <li>Use another color for definitions</li>
+                            <li>Mark important dates distinctly</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="method-card">
+                    <div class="planner-card ai-tips-card">
+                        <div class="method-header">
+                            <span class="method-emoji">📊</span>
+                            <h4>Diagram Drawing</h4>
+                        </div>
+                        <ul class="method-bullet-list">
+                            <li>Sketch diagrams for processes</li>
+                            <li>Create flowcharts for steps</li>
+                            <li>Draw comparisons side by side</li>
+                        </ul>
+
+                    </div>
+                </div>
+</section>
+
+        <section class="planner-card ai-tips-card">
+            <h3 class="card-section-heading color-purple"><span class="heading-icon">🧬</span> AI Tips for Fast Learners</h3>
+            <ol class="ai-ordered-list">
+                <li><span>Set stretch goals beyond the syllabus</span></li>
+                <li><span>Take on leadership roles in study groups</span></li>
+                <li><span>Explore university-level resources early</span></li>
+                <li><span>Use interleaved practice across subjects</span></li>
+                <li><span>Challenge yourself with timed simulations</span></li>
+            </ol>
+        </section>
+
+    </main>
+
+    <script src="plan.js"></script>
+</body>
+</html>

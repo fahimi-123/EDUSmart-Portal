@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduSmart Portal - Learning Style Assessment</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="page_student_learningtest.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <header>
+        <div class="logo-area">
+            <div class="logo-icon">🎓</div>
+            <div class="logo-text">EduSmart Portal <span class="logo-subtext">Student Dashboard</span></div>
+        </div>
+        <div class="user-nav-info">
+            <span class="student-name-header">Tan Wei Ming · 4 Amanah</span>
+            <a href="page_login_main.html" class="sign-out-btn">↳ Sign Out</a>
+        </div>
+    </header>
+
+    <div class="tabs-container">
+        <a href="page_student_reportcard.html" class="tab-item">📄 Report Card</a>
+        <a href="page_student_learningtest.html" class="tab-item active">🌐 Learning Test <span class="dot-indicator"></span></a>
+        <a href="page_student_studyplanner.html" class="tab-item">📅 Study Planner</a>
+    </div>
+
+    <main>
+        <div class="page-title-section">
+            <div class="page-title-icon">🧠</div>
+            <div class="page-title-text">
+                <h1>Psychometric Assessment</h1>
+                <p>Discover your learning style, thinking pattern and academic strengths.</p>
+            </div>
+        </div>
+
+        <div id="screen-landing" class="assessment-card active">
+            <div class="center-icon-wrapper">
+                <div class="microscope-icon">🔬</div>
+            </div>
+            <h2>Learning Style Assessment</h2>
+            <p class="subtitle">Answer 12 questions to discover how you learn best. The results will be used to create your personalised study plan.</p>
+
+            <div class="style-pillars-grid">
+                <div class="pillar-box">
+                    <span class="pillar-emoji">👁️</span>
+                    <h3>Visual</h3>
+                    <p>Diagrams & Charts</p>
+                </div>
+                <div class="pillar-box">
+                    <span class="pillar-emoji">👂</span>
+                    <h3>Auditory</h3>
+                    <p>Discussion & Audio</p>
+                </div>
+                <div class="pillar-box">
+                    <span class="pillar-emoji">✋</span>
+                    <h3>Kinesthetic</h3>
+                    <p>Practice & Action</p>
+                </div>
+            </div>
+
+            <button id="start-btn" class="primary-btn">Start Assessment ➔</button>
+        </div>
+
+        <div id="screen-quiz" class="assessment-card hidden">
+            <div class="quiz-status-header">
+                <span id="question-counter">Question 1 of 12</span>
+                <span id="progress-percentage">0% complete</span>
+            </div>
+
+            <div class="question-container">
+                <h2 id="question-text" class="question-title">When learning something new, I prefer to...</h2>
+
+                <div class="options-list">
+                    <label class="option-card">
+                        <input type="radio" name="learning-option" value="visual">
+                        <span class="radio-custom"></span>
+                        <span class="option-text" id="opt-visual">Read and look at diagrams or charts</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="learning-option" value="auditory">
+                        <span class="radio-custom"></span>
+                        <span class="option-text" id="opt-auditory">Listen to someone explain it to me</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="learning-option" value="kinesthetic">
+                        <span class="radio-custom"></span>
+                        <span class="option-text" id="opt-kinesthetic">Try it out myself hands-on</span>
+                    </label>
+                </div>
+            </div>
+
+            <button id="next-btn" class="primary-btn dynamic-next" disabled>Next ➔</button>
+        </div>
+
+        <div id="screen-results" class="hidden">
+            <div class="assessment-card result-top-card">
+                <div class="big-eye-icon">👁️</div>
+                <h2>Visual Learner</h2>
+                <p class="subtitle text-center">You learn best through diagrams, charts, mind maps and color-coded notes.</p>
+                <div class="tag-container">
+                    <span class="badge-tag">🔍 Analytical Thinker</span>
+                </div>
+            </div>
+
+            <div class="assessment-card result-chart-card">
+                <h3 class="chart-header-title">Your Dimension Scores</h3>
+                <div class="chart-wrapper">
+                    <canvas id="dimensionChart"></canvas>
+                </div>
+            </div>
+
+            <p class="footer-hint-text">Head to the <a href="#">Study Planner</a> tab to see your personalised study plan!</p>
+        </div>
+
+    </main>
+
+    <script src="test.js"></script>
+</body>
+</html>

@@ -1,0 +1,271 @@
+﻿:root {
+    --bg-color: #f8fafc;
+    --primary-purple: #6366f1;
+    --text-dark: #1e293b;
+    --text-light: #64748b;
+    --border-color: #f1f5f9;
+    --card-bg: #ffffff;
+    /* Pill & Accents colors */
+    --pill-purple-bg: #eeeffc;
+    --pill-purple-text: #4f46e5;
+    --list-check-green: #10b981;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-dark);
+    padding-bottom: 60px;
+}
+
+/* --- Header / Navigation Bar --- */
+header {
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    background-color: var(--primary-purple);
+    color: white;
+    padding: 6px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.logo-text {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.logo-subtext {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-left: 5px;
+    font-weight: 400;
+}
+
+.user-nav-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 13px;
+    color: var(--text-light);
+}
+
+.student-name-header {
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.sign-out-btn {
+    color: var(--text-light);
+    text-decoration: none;
+}
+
+/* --- Tabbed Subnavigation --- */
+.tabs-container {
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0 40px;
+    display: flex;
+    gap: 30px;
+}
+
+.tab-item {
+    padding: 15px 0;
+    font-size: 14px;
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+}
+
+    .tab-item.active {
+        color: var(--primary-purple);
+    }
+
+        .tab-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-purple);
+        }
+
+/* --- Layout Structure --- */
+main {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.page-title-section {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.page-title-icon {
+    background-color: #e0e7ff;
+    color: var(--primary-purple);
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+}
+
+.page-title-text h1 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.page-title-text p {
+    font-size: 13px;
+    color: var(--text-light);
+}
+
+/* --- Twin Meta Cards Row --- */
+.meta-badge-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.meta-badge-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.meta-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+}
+
+.icon-purple {
+    background-color: #f3e8ff;
+    color: #9333ea;
+}
+
+.icon-blue {
+    background-color: #e0f2fe;
+    color: #0284c7;
+}
+
+.meta-text-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.meta-label {
+    font-size: 11px;
+    color: var(--text-light);
+    margin-bottom: 2px;
+}
+
+.meta-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+/* --- Base Panel Cards Setup --- */
+.planner-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+}
+
+.card-section-heading {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-light);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.color-purple {
+    color: var(--primary-purple);
+}
+
+/* Timeline Layout Elements */
+.schedule-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* --- Media Queries for Responsive Handling --- */
+
+@media (max-width: 768px) {
+    header {
+        padding: 15px 20px;
+    }
+
+    .tabs-container {
+        padding: 0 20px;
+    }
+
+    main {
+        margin: 20px auto;
+    }
+}
+
+@media (max-width: 520px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .user-nav-info {
+        width: 100%;
+        justify-content: space-between;
+        border-top: 1px dashed var(--border-color);
+        padding-top: 10px;
+    }
+
+    .meta-badge-row {
+        grid-template-columns: 1fr; /* Force meta pills to stack clean vertically on small mobile phone panels */
+    }
+
+    .planner-card {
+        padding: 20px 16px; /* Save margin space on thin devices */
+    }
+}

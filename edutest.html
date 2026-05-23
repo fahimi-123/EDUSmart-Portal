@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduPortal - Student Performance Management</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Supabase CDN Core Engine Link Needed on Page 2 -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+    <!-- ChartJS Link added to allow your Analytics charts to draw smoothly -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="eduSmart_portal.css">
+</head>
+<body>
+
+    <!-- App Shell Header -->
+    <header class="portal-header">
+        <div class="brand">
+            <div class="brand-mark">EP</div>
+            <div>
+                <h1>EduPortal</h1>
+                <p>Performance Management Engine</p>
+            </div>
+        </div>
+        <nav class="portal-nav">
+            <button class="nav-btn active" data-target="panel-scoreboard">Scoreboard</button>
+            <button class="nav-btn" data-target="panel-analytics">Analytics</button>
+            <button class="nav-btn" data-target="panel-leaderboard">Leaderboard</button>
+        </nav>
+    </header>
+
+    <!-- Core Layout Space -->
+    <main class="portal-main">
+
+        <!-- PANEL 1: INLINE-EDITABLE SCOREBOARD -->
+        <section id="panel-scoreboard" class="portal-panel active">
+            <div class="panel-top">
+                <div>
+                    <h2>Student Scoreboard</h2>
+                    <p>Review overall student performance metrics pulled directly from your Supabase system database.</p>
+                </div>
+                <div class="filter-group">
+                    <label for="class-filter">Filter Cohort</label>
+                    <select id="class-filter">
+                        <option value="All">All Classes</option>
+                        <option value="JSS1">JSS1</option>
+                        <option value="JSS2">JSS2</option>
+                        <option value="JSS3">JSS3</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="table-wrap">
+                <div class="responsive-table-scroll">
+                    <table class="scoreboard-table">
+                        <thead>
+                            <tr>
+                                <th>Student Name</th>
+                                <th>Class Track</th>
+                                <th>BM</th>
+                                <th>English</th>
+                                <th>Math</th>
+                                <th>Sejarah</th>
+                                <th>Sains</th>
+                                <th>Overall Avg</th>
+                                <th>Learner Type Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="scoreboard-body">
+                            <!-- Rendered Dynamically via eduSmart_portal.js -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- PANEL 2: ANALYTICS & RECOMMENDATION LAYERS -->
+        <section id="panel-analytics" class="portal-panel">
+            <div class="panel-top">
+                <div>
+                    <h2>Performance Analytics</h2>
+                    <p>Real-time visual processing of structural test-to-exam conversion distributions and class benchmark summaries.</p>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Target Distribution</h3>
+                    <div class="canvas-responsive-container">
+                        <canvas id="distribution-chart" width="400" height="300"></canvas>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <h3>Subject Averages</h3>
+                    <div class="canvas-responsive-container">
+                        <canvas id="average-chart" width="400" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recommendations">
+                <h3>System Insights &amp; Adaptive Recommendations</h3>
+                <div id="recommendation-list" class="recommendation-list">
+                    <!-- Rendered Dynamically via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- PANEL 3: LEADERBOARD SHOWCASE -->
+        <section id="panel-leaderboard" class="portal-panel">
+            <div class="panel-top">
+                <div>
+                    <h2>Academic Leaderboard</h2>
+                    <p>Track academic achievements across student cohorts. Filter tabs to isolate individual subject domains.</p>
+                </div>
+            </div>
+
+            <div class="portal-nav" style="margin-bottom: 24px;">
+                <button class="subject-tab active" data-subject="Mathematics">Mathematics</button>
+                <button class="subject-tab" data-subject="English">English</button>
+                <button class="subject-tab" data-subject="Science">Science</button>
+            </div>
+
+            <div class="leaderboard-display">
+                <div class="responsive-table-scroll">
+                    <!-- Live Visual Podium Structure -->
+                    <div class="podium-card" style="display: flex; gap: 20px; justify-content: center; margin-bottom: 30px; text-align: center;">
+                        <div class="podium-item silver" style="background: #e2e8f0; padding: 20px; border-radius: 12px; width: 150px;">
+                            <span class="podium-rank" style="display:block; font-weight: bold; color: #64748b;">2nd Place</span>
+                            <div class="podium-meta">
+                                <strong id="silver-name" style="display: block; margin-top: 8px;">-</strong>
+                                <span id="silver-score" style="color: #4f46e5; font-weight: 600;">-</span>
+                            </div>
+                        </div>
+                        <div class="podium-item gold" style="background: #fef3c7; padding: 25px; border-radius: 12px; width: 170px; border: 2px solid #f59e0b; transform: translateY(-10px);">
+                            <span class="podium-rank" style="display:block; font-weight: bold; color: #d97706;">🥇 Champion</span>
+                            <div class="podium-meta">
+                                <strong id="gold-name" style="display: block; margin-top: 8px;">-</strong>
+                                <span id="gold-score" style="color: #4f46e5; font-weight: 700; font-size: 1.1em;">-</span>
+                            </div>
+                        </div>
+                        <div class="podium-item bronze" style="background: #ffedd5; padding: 20px; border-radius: 12px; width: 150px;">
+                            <span class="podium-rank" style="display:block; font-weight: bold; color: #ea580c;">3rd Place</span>
+                            <div class="podium-meta">
+                                <strong id="bronze-name" style="display: block; margin-top: 8px;">-</strong>
+                                <span id="bronze-score" style="color: #4f46e5; font-weight: 600;">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Full Breakdown Standings -->
+                <div class="leaderboard-table-wrap">
+                    <h3>Complete Rankings</h3>
+                    <div class="responsive-table-scroll">
+                        <table class="leaderboard-table">
+                            <thead>
+                                <tr>
+                                    <th>Rank Position</th>
+                                    <th>Student Name</th>
+                                    <th>Academic Domain</th>
+                                    <th>Cumulative Score</th>
+                                </tr>
+                            </thead>
+                            <tbody id="leaderboard-body">
+                                <!-- Rendered Dynamically via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="portal-footer">
+        <p>&copy; 2026 EduPortal Core Engine v2.4. Adaptive Responsive Framework.</p>
+    </footer>
+
+    <!-- Connects to your external JS processing engine -->
+    <script src="edutest.js"></script>
+</body>
+</html>
