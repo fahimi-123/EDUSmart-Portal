@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduSmart Portal</title>
+  <link rel="stylesheet" href="eduSmart_portal.css" />
+</head>
+<body>
+  <header class="portal-header">
+    <div class="brand">
+      <span class="brand-mark">ES</span>
+      <div>
+        <h1>EduSmart Teacher Portal</h1>
+        <p>Class management, performance analytics, and leaderboard insights.</p>
+      </div>
+    </div>
+    <nav class="portal-nav" aria-label="Portal navigation">
+      <button class="nav-btn active" data-target="scoreboard">Scoreboard</button>
+      <button class="nav-btn" data-target="analysis">AI Analysis</button>
+      <button class="nav-btn" data-target="leaderboard">Leaderboard</button>
+    </nav>
+  </header>
+
+  <main class="portal-main">
+    <section id="scoreboard" class="portal-panel active" aria-labelledby="scoreboard-title">
+      <div class="panel-top">
+        <div>
+          <h2 id="scoreboard-title">Scoreboard</h2>
+          <p>Click any test or exam score to edit instantly. Filter by class and record teacher comments.</p>
+        </div>
+        <div class="filter-group">
+          <label for="class-filter">Class filter</label>
+          <select id="class-filter" aria-label="Filter students by class">
+            <option value="All">All classes</option>
+            <option value="JSS1">JSS1</option>
+            <option value="JSS2">JSS2</option>
+            <option value="JSS3">JSS3</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="scoreboard-table">
+          <thead>
+            <tr>
+              <th>Student</th>
+              <th>Class</th>
+              <th>Test</th>
+              <th>Exam</th>
+              <th>Average</th>
+              <th>Performance</th>
+              <th>Teacher comment</th>
+            </tr>
+          </thead>
+          <tbody id="scoreboard-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="analysis" class="portal-panel" aria-labelledby="analysis-title">
+      <div class="panel-top">
+        <div>
+          <h2 id="analysis-title">AI Analysis</h2>
+          <p>Review distribution insights, compare subject averages, and follow benchmark recommendations.</p>
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <article class="stat-card">
+          <h3>Learning distribution</h3>
+          <canvas id="distribution-chart" width="320" height="240" aria-label="Learner distribution pie chart"></canvas>
+        </article>
+        <article class="stat-card">
+          <h3>Subject average comparison</h3>
+          <canvas id="average-chart" width="320" height="240" aria-label="Subject average bar chart"></canvas>
+        </article>
+      </div>
+
+      <div class="recommendations">
+        <h3>AI recommendations</h3>
+        <div id="recommendation-list" class="recommendation-list"></div>
+      </div>
+    </section>
+
+    <section id="leaderboard" class="portal-panel" aria-labelledby="leaderboard-title">
+      <div class="panel-top">
+        <div>
+          <h2 id="leaderboard-title">Leaderboard</h2>
+          <p>Subject tabs, animated podium, and the all-subject top scorer summary.</p>
+        </div>
+        <div class="tabs">
+          <button class="subject-tab active" data-subject="Mathematics">Mathematics</button>
+          <button class="subject-tab" data-subject="English">English</button>
+          <button class="subject-tab" data-subject="Science">Science</button>
+        </div>
+      </div>
+
+      <div class="leaderboard-display">
+        <div class="podium-card" aria-label="Top three students podium">
+          <div class="podium-item silver" data-rank="2">
+            <span class="podium-rank">2</span>
+            <strong id="silver-name">-</strong>
+            <small id="silver-score">0 pts</small>
+          </div>
+          <div class="podium-item gold" data-rank="1">
+            <span class="podium-rank">1</span>
+            <strong id="gold-name">-</strong>
+            <small id="gold-score">0 pts</small>
+          </div>
+          <div class="podium-item bronze" data-rank="3">
+            <span class="podium-rank">3</span>
+            <strong id="bronze-name">-</strong>
+            <small id="bronze-score">0 pts</small>
+          </div>
+        </div>
+
+        <div class="leaderboard-table-wrap">
+          <h3>Top scorers summary</h3>
+          <table class="leaderboard-table">
+            <thead>
+              <tr>
+                <th>Position</th>
+                <th>Student</th>
+                <th>Subject</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody id="leaderboard-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="portal-footer">
+    <p>EduSmart Portal • Built for teachers to monitor performance, edit marks, and discover AI-driven insights.</p>
+  </footer>
+
+  <script src="eduSmart_portal.js" defer></script>
+</body>
+</html>

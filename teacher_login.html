@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduSmart Teacher Login</title>
+  <style>
+    :root {
+      --bg: #0b3d91;
+      --surface: #ffffff;
+      --surface-strong: #f8fafc;
+      --text: #1f2937;
+      --text-muted: #4b5563;
+      --accent: #4f46e5;
+      --border: #d1d5db;
+      --shadow: 0 18px 60px rgba(15, 23, 42, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #0d47a1 0%, #1e3a8a 55%, #4338ca 100%);
+      color: var(--text);
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .login-card {
+      width: min(100%, 440px);
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 24px;
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      padding: 32px 32px 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .logo-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: var(--accent);
+      color: white;
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.75rem, 2vw, 2.25rem);
+      line-height: 1.1;
+    }
+
+    p.subtitle {
+      margin: 12px 0 24px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: var(--surface-strong);
+      color: var(--text);
+      font-size: 0.96rem;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    input[type="email"]:focus,
+    input[type="password"]:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.12);
+    }
+
+    .field {
+      margin-bottom: 18px;
+    }
+
+    .options {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .checkbox-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+
+    .checkbox-label input {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--accent);
+    }
+
+    .forgot-link,
+    .register-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .forgot-link:hover,
+    .register-link:hover {
+      text-decoration: underline;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      padding: 14px 18px;
+      border: none;
+      border-radius: 14px;
+      background: var(--accent);
+      color: white;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 18px 40px rgba(79, 70, 229, 0.2);
+    }
+
+    button[type="submit"]:hover {
+      transform: translateY(-1px);
+    }
+
+    .info-bar {
+      margin-top: 24px;
+      text-align: center;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    .error-message {
+      margin-top: 10px;
+      color: #b91c1c;
+      font-size: 0.92rem;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <section class="login-card">
+    <div class="logo">
+      <span class="logo-mark">ES</span>
+      <div>
+        <strong>EduSmart</strong>
+        <div style="font-size:0.95rem; color:#6b7280;">Teacher Portal Login</div>
+      </div>
+    </div>
+
+    <h1>Teacher sign in</h1>
+    <p class="subtitle">Enter your EduSmart email and password to access the teacher dashboard.</p>
+
+    <form id="login-form" action="#" method="POST" novalidate>
+      <div class="field">
+        <label for="teacher-email">Email address</label>
+        <input id="teacher-email" name="email" type="email" required placeholder="you@school.edu" autocomplete="email" />
+      </div>
+
+      <div class="field">
+        <label for="teacher-password">Password</label>
+        <input id="teacher-password" name="password" type="password" required placeholder="Enter your password" autocomplete="current-password" />
+      </div>
+
+      <div class="options">
+        <label class="checkbox-label">
+          <input type="checkbox" name="remember" /> Remember me
+        </label>
+        <a href="#" class="forgot-link">Forgot password?</a>
+      </div>
+
+      <button type="submit">Log in</button>
+      <p id="login-error" class="error-message">Please enter a valid email and password.</p>
+    </form>
+
+    <p class="info-bar">If you do not have a teacher account, contact your school administrator.</p>
+  </section>
+
+  <script>
+    const form = document.getElementById('login-form');
+    const errorEl = document.getElementById('login-error');
+
+    form.addEventListener('submit', (event) => {
+      const email = form.email.value.trim();
+      const password = form.password.value.trim();
+
+      if (!email || !password) {
+        event.preventDefault();
+        errorEl.textContent = 'Email and password are required for teacher login.';
+        errorEl.style.display = 'block';
+        return;
+      }
+
+      if (!email.includes('@')) {
+        event.preventDefault();
+        errorEl.textContent = 'Please provide a valid teacher email address.';
+        errorEl.style.display = 'block';
+        return;
+      }
+
+      errorEl.style.display = 'none';
+      // Replace the line below with your real login endpoint
+      // form.action = '/teacher/login';
+    });
+  </script>
+</body>
+</html>
