@@ -15,6 +15,7 @@
             <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center font-bold text-indigo-600 text-sm shadow-sm">
                 ES
             </div>
+            <div id="google_translate_element" color="black"></div>
             <span class="text-white text-sm font-semibold tracking-wide">EduSmart Dashboard</span>
         </div>
     </header>
@@ -99,5 +100,18 @@
         <p class="font-medium">Version 1.0</p>
     </footer>
 
+        <script type="text/javascript">
+        function googleTranslateElementInit() {
+            // This looks specifically for the element matching ID 'google_translate_element'
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+
+    <!-- FIX 2: Added 'https:' to the source URL so it works when running locally via double-click -->
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    
 </body>
 </html>
