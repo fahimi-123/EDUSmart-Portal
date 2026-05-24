@@ -26,6 +26,7 @@
                 <h1>EduPortal</h1>
                 <p>Performance Management Engine</p>
             </div>
+            <div id="google_translate_element" color="black"></div>
         </div>
         <nav class="portal-nav">
             <button class="nav-btn active" data-target="panel-scoreboard">Scoreboard</button>
@@ -184,5 +185,18 @@
 
     <!-- Connects to your external JS processing engine -->
     <script src="edutest.js"></script>
+
+        <script type="text/javascript">
+        function googleTranslateElementInit() {
+            // This looks specifically for the element matching ID 'google_translate_element'
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+
+    <!-- FIX 2: Added 'https:' to the source URL so it works when running locally via double-click -->
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
